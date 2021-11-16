@@ -1,0 +1,90 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+
+Description: >-
+  Stack responsible to build the AWS Lambda layers used in the functions
+
+
+Parameters:
+  pAWSLambdaPowerToolsLayerName:
+    Default: lambda--datalake-aws-lambda-powertools
+    Type: String
+    Description: name of the Lambda layer
+  pAWSLambdaPowerToolsDescription:
+    Default: AWS Lambda Powertools (Python) - https://github.com/awslabs/aws-lambda-powertools-python
+    Type: String
+    Description: description of the Lambda layer
+  pAWSLambdaPowerToolsRuntimes:
+    Default: python3.6,python3.7,python3.8
+    Type: CommaDelimitedList
+    Description: list of compatible runtimes
+  pPytzLayerName:
+    Default: lambda--datalake-pytz
+    Type: String
+    Description: name of the Lambda layer
+  pPytzDescription:
+    Default: Pytz
+    Type: String
+    Description: description of the Lambda layer
+  pPytzRuntimes:
+    Default: python3.6,python3.7,python3.8
+    Type: CommaDelimitedList
+    Description: list of compatible runtimes
+  pAWSDataWranglerLayerName:
+    Default: lambda--datalake-aws-data-wrangler
+    Type: String
+    Description: name of the Lambda layer
+  pAWSDataWranglerDescription:
+    Default: AWS Data Wrangler - https://github.com/awslabs/aws-data-wrangler
+    Type: String
+    Description: description of the Lambda layer
+  pAWSDataWranglerRuntimes:
+    Default: python3.8
+    Type: CommaDelimitedList
+    Description: list of compatible runtimes
+
+  
+Resources:
+  rAWSLambdaPowertoolsLambdaLayer:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: !Ref pAWSLambdaPowerToolsLayerName
+      Description: !Ref pAWSLambdaPowerToolsDescription
+      Content: lambda-layers/aws_lambda_powertools.zip
+      CompatibleRuntimes: !Ref pAWSLambdaPowerToolsRuntimes
+
+
+  rPytzLambdaLayer:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: !Ref pPytzLayerName
+      Description: !Ref pPytzDescription
+      Content: lambda-layers/pytz.zip
+      CompatibleRuntimes: !Ref pPytzRuntimes
+
+
+  rAWSDataWranglerLambdaLayer:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: !Ref pAWSDataWranglerLayerName
+      Description: !Ref pAWSDataWranglerDescription
+      Content: lambda-layers/awswrangler-layer-2.3.0-py3.8.zip
+      CompatibleRuntimes: !Ref pAWSDataWranglerRuntimes
+
+
+Outputs:
+  oAWSLambdaPowertoolsLambdaLayerArn:
+    Description: Arn of the latest version of the AWS Lambda Powertools lambda layer
+    Value: !Ref rAWSLambdaPowertoolsLambdaLayer
+    Export:
+      Name: DL-Foundations-AWSLambdaPowertoolsLambdaLayerArn
+  oPytzLambdaLayerArn:
+    Description: Arn of the latest version of the Pytz lambda layer
+    Value: !Ref rPytzLambdaLayer
+    Export:
+      Name: DL-Foundations-PytzLambdaLayerArn
+  oAWSDataWranglerLambdaLayerArn:
+    Description: Arn of the latest version of the AWS Data Wrangler lambda layer
+    Value: !Ref rAWSDataWranglerLambdaLayer
+    Export:
+      Name: DL-Foundations-AWSDataWranglerLambdaLayerArn

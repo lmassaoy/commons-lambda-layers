@@ -1,3 +1,9 @@
+# Visual Studio Code
+*.DS_Store*
+
+# Project
+commons/lambda-layers.packaged.yaml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
