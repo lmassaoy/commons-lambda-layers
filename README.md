@@ -1,6 +1,35 @@
 # commons-lambda-layers
 This repo stores python packages (zipped) and a CloudFormation script to deploy them as AWS Lambda layers
 
+
+## Requirements
+- AWS CLI installed
+- IAM user configured in the AWS CLI with permissions to:
+    - upload files into Amazon S3 bucket (store the zipped packages)
+    - manage AWS Lambda layers
+
+## How to deploy the stack
+
+There are 2 options to be followed in order to deploy the stack:
+1. Editing the shell scripts (recommended for new users)
+2. Passing the parameters as argments in the shell invocation
+
+### Step 1
+
+- Edit the shell script [cloudformation_package.sh](commons/cloudformation_package.sh) including the bucket name where the zipped packages will be sent and the AWS CLI profile that will be used OR pass these parameters as argments
+- Run the shell script:
+    ```
+    $ sh commons/cloudformation_package.sh
+    ```
+### Step 2
+
+- Edit the shell script [cloudformation_deploy.sh](commons/cloudformation_deploy.sh) including the bucket name where the zipped packages will be sent, the AWS CLI profile that will be used, the CloudFormation stack name, and the chosen region OR pass these parameters as argments
+- Run the shell script:
+    ```
+    $ sh commons/cloudformation_deploy.sh
+    ```
+
+
 ## Avaliable packages
 ### Python
 - [AWS Data Wrangler](https://github.com/awslabs/aws-data-wrangler)
