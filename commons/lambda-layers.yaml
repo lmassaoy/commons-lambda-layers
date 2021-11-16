@@ -7,7 +7,7 @@ Description: >-
 
 Parameters:
   pAWSLambdaPowerToolsLayerName:
-    Default: lambda--datalake-aws-lambda-powertools
+    Default: aws-lambda-powertools
     Type: String
     Description: name of the Lambda layer
   pAWSLambdaPowerToolsDescription:
@@ -19,7 +19,7 @@ Parameters:
     Type: CommaDelimitedList
     Description: list of compatible runtimes
   pPytzLayerName:
-    Default: lambda--datalake-pytz
+    Default: pytz
     Type: String
     Description: name of the Lambda layer
   pPytzDescription:
@@ -31,7 +31,7 @@ Parameters:
     Type: CommaDelimitedList
     Description: list of compatible runtimes
   pAWSDataWranglerLayerName:
-    Default: lambda--datalake-aws-data-wrangler
+    Default: aws-data-wrangler
     Type: String
     Description: name of the Lambda layer
   pAWSDataWranglerDescription:
