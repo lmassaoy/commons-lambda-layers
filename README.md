@@ -23,7 +23,7 @@ There are 2 options to be followed in order to deploy the stack:
     ```
 ### Step 2
 
-- Edit the shell script [cloudformation_deploy.sh](commons/cloudformation_deploy.sh) including the bucket name where the zipped packages will be sent, the AWS CLI profile that will be used, the CloudFormation stack name, and the chosen region OR pass these parameters as argments
+- Edit the shell script [cloudformation_deploy.sh](commons/cloudformation_deploy.sh) including the bucket name where the packaged template will be sent, the AWS CLI profile that will be used, the CloudFormation stack name, and the chosen region OR pass these parameters as argments
 - Run the shell script:
     ```
     $ sh commons/cloudformation_deploy.sh
